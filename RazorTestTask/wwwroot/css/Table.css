@@ -1,0 +1,48 @@
+﻿.Table {
+    width: 80%;
+    height: 90%;
+    margin: auto;
+}
+
+.Row {
+    width: 100%;
+    height: 50px;
+    display: flex;
+}
+
+.Colum {
+    width: 30%;
+    height: 100%;
+    text-align: center;
+    border: 2px solid black;
+    background: rgb(182, 255, 0);
+}
+
+.ColumInf {
+    width: 150px;
+}
+
+.ButtomInf {
+    width: 100%;
+    height: 100%;
+    background: rgb(177 184 50);
+}
+
+    .ButtomInf:hover {
+        background: rgb(230 184 100);
+    }
+
+.ButtomDelete {
+    width: 100%;
+    height: 100%;
+    background: rgb(148, 41, 41);
+}
+
+    .ButtomDelete:hover {
+        background: rgb(230, 41, 110);
+    }
+
+.Butt {
+    cursor: pointer;
+    border: 0px;
+}

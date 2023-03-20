@@ -1,0 +1,95 @@
+﻿@page
+@model AdministrationModel
+@{
+}
+
+<html>
+    <head>
+        <link href="~/css/Administration.css" rel="stylesheet" type="text/css"/>
+        <link href="~/css/Table.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <div class="MainBody">
+            <div class="Table">
+                <div class="Row">
+                    <div class="Colum">
+                        <p>Name</p>
+                    </div>
+                    <div class="Colum">
+                        <p>Role</p>
+                    </div>
+                    <div class="Colum ColumInf">
+
+                    </div>
+                   @* <div class="Colum ColumInf">
+
+                    </div>*@
+                </div>
+                @foreach(var user in Model.users)
+                {
+                    <form method="post" style="margin:0">
+                        <div class="Row">
+                            <div class="Colum">
+                                <input name="Name" value="@user.Subname @user.Name"/>
+                            </div>
+                            <div class="Colum">
+                                <input name="Role" value="@user.Role.Name" />
+                            </div>
+                            <div class="Colum ColumInf">
+                                <input type="submit" class="ButtomInf Butt" value="Update" asp-page-handler="Update"/>
+                            </div>
+                        </div>
+                    </form>
+                }
+            </div>
+        </div>
+
+
+        @if (Model.FlagUpdateUser)
+        {
+            <div class="BackBlack">
+                <div class="WindowUpdateUser">
+                    <form method="post">
+                        <div>
+                            <div>
+                                <div>
+                                    <label>Name</label>
+                                </div>
+                                <input asp-for="@Model.userNew.Name" />
+                                <input asp-for="@Model.userOld.Name" value="@Model.userOld.Name" style="display:none" />
+                            </div>
+                            <div>
+                                <div>
+                                    <label>Subname</label>
+                                </div>
+                                <input asp-for="@Model.userNew.Subname" />
+                                <input asp-for="@Model.userOld.Subname" value="@Model.userOld.Subname" style="display:none" />
+                            </div>
+                            <div>
+                                <div>
+                                    <label>Login</label>
+                                </div>
+                                <input asp-for="@Model.userNew.Login" />
+                                <input asp-for="@Model.userOld.Login" value="@Model.userOld.Login" style="display:none" />
+                            </div>
+                            <div>
+                                <div>
+                                    <label>Password</label>
+                                </div>
+                                <input asp-for="@Model.userNew.Password" />
+                                <input asp-for="@Model.userOld.Password" value="@Model.userOld.Password" style="display:none" />
+                            </div>
+                        </div>
+                        <div>
+                            <input type="submit" value="Submit" asp-page-handler="UpdateUser"/>
+                            <a href="Administration">
+                                <input type="button" value="Close" />
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        }
+
+    </body>
+</html>

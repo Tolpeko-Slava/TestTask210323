@@ -1,0 +1,191 @@
+﻿@page
+@model IndexModel
+@{
+}
+
+
+<html>
+    <head>
+        <link href="~/css/Index.css" rel="stylesheet" type="text/css"/>
+        <link href="~/css/IndexJoinWindow.css" rel="stylesheet" type="text/css"/>
+        <link href="~/css/Table.css" rel="stylesheet" type="text/css"/>
+        <link href="~/css/IndexWindowAdd.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <div class="Header">
+            <div class="HeaderNav">
+                @if (Model.userInSite == "Guest")
+                {
+                    <button class="Nav" onclick="onClickJoinSite()">Join</button>
+                    <a href="Registration">
+                        <button class="Nav">Registration</button>
+                    </a>
+                }
+                @if(Model.userInSite == "User"){
+                    <p>User</p>
+                }
+                @if (Model.userInSite == "Admin")
+                {
+                    <p>Hello administration</p>
+                    @*<button class="Nav" onclick="onClickJoinSite()">Join</button>
+                    <a href="Registration">
+                        <button class="Nav">Registration</button>
+                    </a>*@
+                    <a href="Administration">Admin</a>
+                }
+            </div>
+        </div>
+
+        <div style="position:absolute; left:0px;top:50%;z-index:100">
+            <button onclick="onClickAddProduct()">AddProduct</button>
+        </div>
+
+
+        <div class="BodyMain">
+            <div class="Table">
+                <div class="Row">
+                    <div class="Colum">
+                        <p>№</p>
+                    </div>
+                    <div class="Colum">
+                        <p>Name</p>
+                    </div>
+                    <div class="Colum">
+                        <p>Quantity</p>
+                    </div>
+                    <div class="Colum ColumInf">
+
+                    </div>
+                    <div class="Colum ColumInf">
+
+                    </div>
+                </div>
+                @foreach(var product in Model.products)
+                {
+                    <form method="post" style="margin:0">
+                        <div class="Row">
+                            <div class="Colum">
+                                <input type="text" asp-for="@Model.productInf.Id"  value="@product.Id.ToString()" />
+                            </div>
+                            <div class="Colum">
+                                <input type="text" asp-for="@Model.productInf.Name" value="@product.Name"/>
+                            </div>
+                            <div class="Colum">
+                                <input type="text" asp-for="@Model.productInf.Quantity" value="@product.Quantity.ToString()"/>
+                            </div>
+                            <div class="Colum ColumInf">
+                                <input type="submit" asp-page-handler="UpdateProductWindow" class="ButtomInf Butt" value="Update">
+                            </div>
+                            <div class="Colum ColumInf">
+                                <input type="submit" asp-page-handler="DeleteProduct" class="ButtomDelete Butt" value="Delete"/>
+                            </div>
+                        </div>
+                    </form>
+                }
+            </div>
+        </div>
+        
+
+
+
+
+        <div id="WindowCreateProduct" class="BlackBack">
+            <div class="WindowAdd">
+                <form method="post">
+                    <div class="Inf">
+                        <div class="BlockInf">
+                            <div class="InfInput">
+                                <label>Name</label>
+                            </div>
+                            <input asp-for="@Model.productInf.Name" class="InputInformation" type="text"/>
+                            <span asp-validation-for="@Model.productInf.Name"></span>
+                        </div>
+                        <div class="BlockInf">
+                            <div class="InfInput">
+                                <label>Quantity</label>
+                            </div>
+                            <input asp-for="@Model.productInf.Quantity" class="InputInformation"  type="number" />
+                            <span asp-validation-for="@Model.productInf.Quantity"></span>
+                        </div>
+                    </div>
+                    <div class="ButtonPanel">
+                        <input type="submit" value="Submit" asp-page-handler="AddProduct" />
+                        <input type="button" onclick="onClickCloseAddProduct()" value="Close"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        @if (Model.FlagUpdateProduct)
+        {
+            <div class="BlackBack" style="display:flex">
+                <div class="WindowAdd">
+                    <form method="post">
+                        <div style="display:none">
+                            <input name="oldName" value="@Model.productInf.Name"/>
+                        </div>
+                        <div class="Inf">
+                            <div class="BlockInf">
+                                <div class="InfInput">
+                                    <label>Name</label>
+                                </div>
+                                <input asp-for="@Model.productOld.Name" style="display:none"/>
+                                <input asp-for="@Model.productInf.Name" class="InputInformation" type="text" value="@Model.productInf.Name"/>
+                                <span asp-validation-for="@Model.productInf.Name"></span>
+                            </div>
+                            <div class="BlockInf">
+                                <div class="InfInput">
+                                    <label>Quantity</label>
+                                </div>
+                                <input asp-for="@Model.productOld.Quantity" style="display:none"/>
+                                <input asp-for="@Model.productInf.Quantity" class="InputInformation" type="number" value="@Model.productInf.Quantity"/>
+                                <span asp-validation-for="@Model.productInf.Quantity"></span>
+                            </div>
+                        </div>
+                        <div class="ButtonPanel">
+                            <input type="submit" value="Submit" asp-page-handler="UpdateProduct" />
+                            <a href="Index">
+                                <input type="button" value="Close" />
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        }
+
+
+        <div id="WindowsJoinInSite" class="BlackBack">
+            <div class="WindowJoin">
+                <form method="post">
+                    <div class="InfInput">
+                        <div class="InputAndLabel">
+                            <div class="LabelCSS">
+                                <label>Login</label>
+                            </div>
+                            <div>
+                                <input asp-for="@Model.user.Login" class="InputCSS" type="text" />
+                                <span asp-validation-for="@Model.user.Login"></span>
+                            </div>
+                        </div>
+                        <div class="InputAndLabel">
+                            <div class="LabelCSS">
+                                <label>Password</label>
+                            </div>
+                            <div>
+                                <input asp-for="@Model.user.Password" class="InputCSS" type="password" />
+                                <span asp-validation-for="@Model.user.Password"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="InfInput">
+                        <input type="submit" class="ButtonSubmit" value="Submit" asp-page-handler="JoinUser" />
+                        <input onclick="onClickCloseWindowJoin()" type="button" class="ButtonSubmit" value="Close" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </body>
+
+    <script type="text/javascript" src="~/js/Index.js"></script>
+</html>

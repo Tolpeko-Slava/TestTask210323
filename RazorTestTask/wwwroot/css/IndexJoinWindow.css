@@ -1,0 +1,56 @@
+﻿.BlackBack{
+	background:rgb(0 0 0 /50%);
+	position:absolute;
+	z-index:100;
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;
+	display:none;
+	/*display:flex;*/
+}
+
+.WindowJoin {
+	width: 400px;
+	height: 200px;
+	background: rgb(93 154 135);
+	margin: auto;
+	border: 3px solid black;
+	border-radius: 7px;
+	padding: 25px;
+}
+
+.InfInput {
+	font-family: system-ui;
+	margin: 20px 0px;
+}
+
+.InputAndLabel {
+	margin: 20px 0px;
+	display:flex;
+}
+
+.InputCSS {
+	border-radius: 5px;
+	border: 2px;
+	height: 25px;
+	font-size: 14px;
+	width: 200px;
+}
+
+.LabelCSS{
+	width:75px;
+}
+
+.ButtonSubmit {
+	margin: 0px 3em;
+	width: 100px;
+	border-radius: 7px;
+	cursor: pointer;
+	border: 2px solid #5a5a5a;
+	background: rgb(94 127 184);
+}
+
+.ButtonSubmit:hover {
+	background: rgb(150 127 255);
+}

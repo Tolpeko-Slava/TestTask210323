@@ -1,0 +1,32 @@
+﻿.WindowAdd {
+    width: 30%;
+    margin: auto;
+    height: 40%;
+    background: rebeccapurple;
+    text-align: center;
+    border:2px solid black;
+    border-radius:5px;
+}
+
+.Inf{
+
+}
+
+.BlockInf {
+    display: flex;
+    text-align: center;
+}
+
+.InfInput {
+    width: 100px;
+    display: flex;
+    text-align: center;
+}
+
+.InputInformation{
+    margin:auto;
+}
+
+.ButtonPanel {
+    padding: 20px;
+}

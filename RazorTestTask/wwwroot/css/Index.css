@@ -1,0 +1,51 @@
+﻿:root{
+    --var-height-top:10%;
+    --var-margin-top:13%;
+    --var-hieght-body:87%;
+}
+
+.Header {
+    position: fixed;
+    height: var(--var-height-top);
+    width: 100%;
+    background: rgb(125, 125, 125);
+    top: 0;
+    left: 0;
+}
+
+.HeaderNav {
+    left: 70%;
+    position: absolute;
+    display: flex;
+    width:100%;
+    height:100%;
+}
+
+.Nav {
+    width: 100px;
+    background: rgb(191, 90, 212);
+    border: 2px solid rgb(96, 21, 87);
+    border-radius: 15px;
+    margin: 1.5em;
+    height: 35px;
+    cursor: pointer;
+}
+
+.Nav:hover{
+    background:rgb(170, 21, 170);
+}
+
+
+.BodyMain {
+    top: var(--var-margin-top);
+    left: 0;
+    position: absolute;
+    width: 100%;
+    height: var(--var-hieght-body)
+}
+
+.MainText{
+    font-size:30px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align:center;
+}

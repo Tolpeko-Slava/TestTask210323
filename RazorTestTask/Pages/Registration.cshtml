@@ -1,0 +1,60 @@
+﻿@page
+@model RegistrationModel
+@{
+}
+
+<html>
+    <head>
+        <link href="~/css/Registration.css" type="text/css" rel="stylesheet"/>
+    </head>
+    <body>
+        <div>
+            <form method="post">
+                <div>
+                    <div>
+                        <label>Name</label>
+                    </div>
+                    <input type="text" asp-for="@Model.user.Name"/>
+                    <span asp-validation-for="@Model.user.Name"></span>
+                </div>
+                <div>
+                    <div>
+                        <label>Subname</label>
+                    </div>
+                    <input type="text" asp-for="@Model.user.Subname"/>
+                    <span asp-validation-for="@Model.user.Subname"></span>
+                </div>
+                <div>
+                    <div>
+                        <label>Login</label>
+                    </div>
+                    <input type="text" asp-for="@Model.user.Login"/>
+                    <span asp-validation-for="@Model.user.Login"></span>
+                </div>
+                <div>
+                    <div>
+                        <label>Password</label>
+                    </div>
+                    <input type="password" asp-for="@Model.user.Password"/>
+                    <span asp-validation-for="@Model.user.Password"></span>
+                </div>
+                <div>
+                    <div>
+                        <label>Password №2</label>
+                    </div>
+                    <input type="password" asp-for="@Model.user.DoublePassword"/>
+                    <span asp-validation-for="@Model.user.DoublePassword"></span>
+                </div>
+                <div>
+                    <input onclick="OnClikCkekingData()" type="submit" value="Submit" />
+                    <a href="Index">
+                        <input type="button" value="Back" />
+                    </a>
+                </div>
+            </form>
+        </div>
+    </body>
+
+    <script type="text/javascript" src="~/js/Registration.js"></script>
+
+</html>
